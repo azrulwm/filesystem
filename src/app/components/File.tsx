@@ -1,6 +1,7 @@
 "use client";
 
 import FileList from "./FileList";
+import README from "./Readme";
 
 const File: React.FC = () => {
   return (
@@ -8,6 +9,8 @@ const File: React.FC = () => {
       <ul data-testid="files">
         <FileList />
       </ul>
+
+      <README />
     </div>
   );
 };
