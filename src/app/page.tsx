@@ -1,7 +1,9 @@
+import File from "./components/File";
+
 export default function Home() {
   return (
-    <div className="">
-      
+    <div>
+      <File />
     </div>
   );
 }
