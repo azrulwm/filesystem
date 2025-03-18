@@ -189,79 +189,87 @@ const FileList: React.FC = () => {
   };
 
   return (
-    <div className="p-6 relative">
-      <div className={showInput ? "blur-sm" : ""}>
-        <ul className="space-y-1">
-          {renderFiles(fileTree)}
-          <li className="mt-6">
-            <button
-              onClick={() => handleAddFileClick(null)}
-              className="flex items-center px-4 py-3 rounded-lg text-lg w-full
-                text-blue-600 hover:bg-blue-50 transition-colors duration-150"
-            >
-              <div className="mr-3 w-8 h-8 rounded-lg bg-blue-100 flex items-center justify-center">
-                <svg
-                  className="w-5 h-5"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M12 4v16m8-8H4"
-                  />
-                </svg>
-              </div>
-              <span className="font-medium">New File</span>
-            </button>
-          </li>
-        </ul>
-      </div>
-
-      {showInput && (
-        <div className="fixed inset-0 flex items-center justify-center backdrop-blur-sm bg-white/30">
-          <div className="bg-white p-6 rounded-lg shadow-xl">
-            <input
-              className="w-full px-4 py-2 text-xl border rounded-lg mb-4 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none"
-              type="text"
-              placeholder="Enter file name"
-              value={inputValue}
-              onChange={(e) => setInputValue(e.target.value)}
-              autoFocus
-              onKeyDown={(e) => {
-                if (e.key === "Enter") {
-                  handleAddFile();
-                }
-                if (e.key === "Escape") {
-                  setShowInput(false);
-                  setInputValue("");
-                  setActiveFolder(null);
-                }
-              }}
-            />
-            <div className="flex justify-end space-x-4">
-              <button
-                onClick={() => {
-                  setShowInput(false);
-                  setInputValue("");
-                  setActiveFolder(null);
-                }}
-                className="px-4 py-2 text-gray-600 hover:bg-gray-100 rounded-lg text-lg transition-colors duration-150"
-              >
-                Cancel
-              </button>
-              <button
-                onClick={handleAddFile}
-                className="px-4 py-2 bg-blue-500 text-white hover:bg-blue-600 rounded-lg text-lg transition-colors duration-150"
-              >
-                Add
-              </button>
-            </div>
-          </div>
+    <div className="min-h-screen flex items-start justify-center bg-gray-50">
+      <div className="w-full max-w-3xl bg-white rounded-xl shadow-sm my-8">
+        <div className="border-b border-gray-100 px-6 py-4">
+          <h1 className="text-xl font-semibold text-gray-800">File System</h1>
         </div>
-      )}
+
+        <div className="p-6 relative">
+          <div className={showInput ? "blur-sm" : ""}>
+            <ul className="space-y-1">
+              {renderFiles(fileTree)}
+              <li className="mt-6">
+                <button
+                  onClick={() => handleAddFileClick(null)}
+                  className="flex items-center px-4 py-3 rounded-lg text-lg w-full
+                    text-blue-600 hover:bg-blue-50 transition-colors duration-150"
+                >
+                  <div className="mr-3 w-8 h-8 rounded-lg bg-blue-100 flex items-center justify-center">
+                    <svg
+                      className="w-5 h-5"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M12 4v16m8-8H4"
+                      />
+                    </svg>
+                  </div>
+                  <span className="font-medium">New File</span>
+                </button>
+              </li>
+            </ul>
+          </div>
+
+          {showInput && (
+            <div className="fixed inset-0 flex items-center justify-center backdrop-blur-sm bg-white/30">
+              <div className="bg-white p-6 rounded-lg shadow-xl">
+                <input
+                  className="w-full px-4 py-2 text-xl border rounded-lg mb-4 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none"
+                  type="text"
+                  placeholder="Enter file name"
+                  value={inputValue}
+                  onChange={(e) => setInputValue(e.target.value)}
+                  autoFocus
+                  onKeyDown={(e) => {
+                    if (e.key === "Enter") {
+                      handleAddFile();
+                    }
+                    if (e.key === "Escape") {
+                      setShowInput(false);
+                      setInputValue("");
+                      setActiveFolder(null);
+                    }
+                  }}
+                />
+                <div className="flex justify-end space-x-4">
+                  <button
+                    onClick={() => {
+                      setShowInput(false);
+                      setInputValue("");
+                      setActiveFolder(null);
+                    }}
+                    className="px-4 py-2 text-gray-600 hover:bg-gray-100 rounded-lg text-lg transition-colors duration-150"
+                  >
+                    Cancel
+                  </button>
+                  <button
+                    onClick={handleAddFile}
+                    className="px-4 py-2 bg-blue-500 text-white hover:bg-blue-600 rounded-lg text-lg transition-colors duration-150"
+                  >
+                    Add
+                  </button>
+                </div>
+              </div>
+            </div>
+          )}
+        </div>
+      </div>
     </div>
   );
 };
